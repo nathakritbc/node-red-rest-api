@@ -1,0 +1,279 @@
+[
+    {
+        "id": "e10a0678.c58a28",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e527bd01ccd044dc",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "node-red-api",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "0c3fd0d75b82e434",
+        "type": "http in",
+        "z": "e10a0678.c58a28",
+        "name": "restData",
+        "url": "/restData",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "f0f0d174fc4fcb6a"
+            ]
+        ]
+    },
+    {
+        "id": "7f3590a268815b34",
+        "type": "http response",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1030,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "aa7488c59e583fb7",
+        "type": "debug",
+        "z": "e10a0678.c58a28",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3926be22c834d300",
+        "type": "mysql",
+        "z": "e10a0678.c58a28",
+        "mydb": "e527bd01ccd044dc",
+        "name": "database",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "aa7488c59e583fb7",
+                "7f3590a268815b34"
+            ]
+        ]
+    },
+    {
+        "id": "efd5839954fb1672",
+        "type": "inject",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "select * from users",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 260,
+        "wires": [
+            [
+                "3926be22c834d300"
+            ]
+        ]
+    },
+    {
+        "id": "f0f0d174fc4fcb6a",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "getAllUsers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "SELECT * FROM users ORDER BY id DESC;",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 180,
+        "wires": [
+            [
+                "3926be22c834d300",
+                "aa7488c59e583fb7"
+            ]
+        ]
+    },
+    {
+        "id": "92abd1e65ac5cc4b",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "getAllSensor",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "SELECT * FROM sensor ORDER BY id DESC;",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "3926be22c834d300"
+            ]
+        ]
+    },
+    {
+        "id": "780d7219e147c162",
+        "type": "http in",
+        "z": "e10a0678.c58a28",
+        "name": "sensor",
+        "url": "/sensor",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "92abd1e65ac5cc4b"
+            ]
+        ]
+    },
+    {
+        "id": "a7afe10c7bbb1694",
+        "type": "inject",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "198667f3c4c14c46"
+            ]
+        ]
+    },
+    {
+        "id": "198667f3c4c14c46",
+        "type": "function",
+        "z": "e10a0678.c58a28",
+        "name": "data sensor",
+        "func": "const temperature = Math.floor(Math.random() * 100) + 1;\nconst humidity = Math.floor(Math.random() * 100) + 1;\nmsg.payload = [null, temperature, humidity];\nmsg.topic = \"INSERT INTO sensor (`id`, `temperature`, `humidity`) VALUES (?, ?, ?);\"\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 440,
+        "wires": [
+            [
+                "3926be22c834d300"
+            ]
+        ]
+    },
+    {
+        "id": "5bd6fb93994927a0",
+        "type": "catch",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "scope": [
+            "3926be22c834d300"
+        ],
+        "uncaught": false,
+        "x": 610,
+        "y": 360,
+        "wires": [
+            [
+                "9e2a03c861683289"
+            ]
+        ]
+    },
+    {
+        "id": "9e2a03c861683289",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "error response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"message\":\"get data not found!\",\"error\":true}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "500",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 360,
+        "wires": [
+            [
+                "7f3590a268815b34"
+            ]
+        ]
+    }
+]

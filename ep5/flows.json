@@ -1,0 +1,717 @@
+[
+    {
+        "id": "e10a0678.c58a28",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e527bd01ccd044dc",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "node-red-api",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "869997d93c448213",
+        "type": "ui_group",
+        "name": "Home",
+        "tab": "d482be54d65fc0fc",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4ae05ea5376c75ba",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "d482be54d65fc0fc",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d2db9769266f6e0b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.137.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d7d1a05524aa3060",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "d482be54d65fc0fc",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7f3590a268815b34",
+        "type": "http response",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 890,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "3926be22c834d300",
+        "type": "mysql",
+        "z": "e10a0678.c58a28",
+        "mydb": "e527bd01ccd044dc",
+        "name": "database",
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "7f3590a268815b34"
+            ]
+        ]
+    },
+    {
+        "id": "92abd1e65ac5cc4b",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "getAllSensor",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "SELECT * FROM sensor ORDER BY id DESC;",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 180,
+        "wires": [
+            [
+                "3926be22c834d300"
+            ]
+        ]
+    },
+    {
+        "id": "780d7219e147c162",
+        "type": "http in",
+        "z": "e10a0678.c58a28",
+        "name": "sensor",
+        "url": "/sensor",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "92abd1e65ac5cc4b"
+            ]
+        ]
+    },
+    {
+        "id": "a7afe10c7bbb1694",
+        "type": "inject",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 260,
+        "wires": [
+            [
+                "198667f3c4c14c46"
+            ]
+        ]
+    },
+    {
+        "id": "198667f3c4c14c46",
+        "type": "function",
+        "z": "e10a0678.c58a28",
+        "name": "data sensor",
+        "func": "const temperature = Math.floor(Math.random() * 100) + 1;\nconst humidity = Math.floor(Math.random() * 100) + 1;\nmsg.payload = [null, temperature, humidity];\nmsg.topic = \"INSERT INTO sensor (`id`, `temperature`, `humidity`) VALUES (?, ?, ?);\"\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "3926be22c834d300"
+            ]
+        ]
+    },
+    {
+        "id": "5bd6fb93994927a0",
+        "type": "catch",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "scope": [
+            "3926be22c834d300"
+        ],
+        "uncaught": false,
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "9e2a03c861683289"
+            ]
+        ]
+    },
+    {
+        "id": "9e2a03c861683289",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "error response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"message\":\"get data not found!\",\"error\":true}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "500",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 120,
+        "wires": [
+            [
+                "7f3590a268815b34"
+            ]
+        ]
+    },
+    {
+        "id": "ed8c22fdb509c3a6",
+        "type": "http in",
+        "z": "e10a0678.c58a28",
+        "name": "getById",
+        "url": "/sensor/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 70,
+        "y": 460,
+        "wires": [
+            [
+                "b0f76697ecea2044"
+            ]
+        ]
+    },
+    {
+        "id": "1e648b26ae32f5e2",
+        "type": "http response",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 930,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b0f76697ecea2044",
+        "type": "function",
+        "z": "e10a0678.c58a28",
+        "name": "getByIdFunction",
+        "func": "const id = msg.req.params.id\nmsg.payload = [id]\nmsg.topic  = \"SELECT * FROM `sensor` WHERE id = ?;\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 460,
+        "wires": [
+            [
+                "bd9996fc4e9f1d62"
+            ]
+        ]
+    },
+    {
+        "id": "bd9996fc4e9f1d62",
+        "type": "mysql",
+        "z": "e10a0678.c58a28",
+        "mydb": "e527bd01ccd044dc",
+        "name": "dbGetById",
+        "x": 390,
+        "y": 460,
+        "wires": [
+            [
+                "a51ae5f201321885"
+            ]
+        ]
+    },
+    {
+        "id": "3f181bab364a2a50",
+        "type": "catch",
+        "z": "e10a0678.c58a28",
+        "name": "catchGetById",
+        "scope": [
+            "bd9996fc4e9f1d62"
+        ],
+        "uncaught": false,
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "5332faf7d5134961"
+            ]
+        ]
+    },
+    {
+        "id": "5332faf7d5134961",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "error response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"message\":\"get data by id not found!\",\"error\":true}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "500",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 380,
+        "wires": [
+            [
+                "1e648b26ae32f5e2"
+            ]
+        ]
+    },
+    {
+        "id": "529b83da19b64e60",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0]",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 500,
+        "wires": [
+            [
+                "1e648b26ae32f5e2"
+            ]
+        ]
+    },
+    {
+        "id": "a51ae5f201321885",
+        "type": "switch",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "nempty"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 460,
+        "wires": [
+            [
+                "5332faf7d5134961"
+            ],
+            [
+                "529b83da19b64e60"
+            ]
+        ]
+    },
+    {
+        "id": "3bb26b7a7e84baf1",
+        "type": "comment",
+        "z": "e10a0678.c58a28",
+        "name": "getAll",
+        "info": "",
+        "x": 290,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "5f95705d42b105d2",
+        "type": "comment",
+        "z": "e10a0678.c58a28",
+        "name": "getById",
+        "info": "",
+        "x": 170,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "499fa7a4d207e284",
+        "type": "http in",
+        "z": "e10a0678.c58a28",
+        "name": "createData",
+        "url": "/sensor",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 60,
+        "y": 780,
+        "wires": [
+            [
+                "a39622a67f46750c",
+                "912d355406a3a66d"
+            ]
+        ]
+    },
+    {
+        "id": "a39622a67f46750c",
+        "type": "debug",
+        "z": "e10a0678.c58a28",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req.body",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "fbed5d58dc2692c5",
+        "type": "http response",
+        "z": "e10a0678.c58a28",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 970,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "912d355406a3a66d",
+        "type": "function",
+        "z": "e10a0678.c58a28",
+        "name": "create sensor data func",
+        "func": "\nconst temperature = msg.req.body.temperature\nconst humidity = msg.req.body.humidity\n\nmsg.payload = [null, temperature, humidity];\nmsg.topic = \"INSERT INTO sensor (`id`, `temperature`, `humidity`) VALUES (?, ?, ?);\"\nreturn msg; ",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 740,
+        "wires": [
+            [
+                "426b01d15c6f64ba"
+            ]
+        ]
+    },
+    {
+        "id": "426b01d15c6f64ba",
+        "type": "mysql",
+        "z": "e10a0678.c58a28",
+        "mydb": "e527bd01ccd044dc",
+        "name": "dataCreate",
+        "x": 550,
+        "y": 740,
+        "wires": [
+            [
+                "8adf85944c22aefe"
+            ]
+        ]
+    },
+    {
+        "id": "95fc155fa0390bdb",
+        "type": "catch",
+        "z": "e10a0678.c58a28",
+        "name": "catchCreateData",
+        "scope": [
+            "426b01d15c6f64ba"
+        ],
+        "uncaught": false,
+        "x": 220,
+        "y": 660,
+        "wires": [
+            [
+                "65317da4ade9b880"
+            ]
+        ]
+    },
+    {
+        "id": "65317da4ade9b880",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "error response",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"message\":\"create data not found!\",\"error\":true}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "500",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 680,
+        "y": 660,
+        "wires": [
+            [
+                "fbed5d58dc2692c5",
+                "11dff6bb50ca8eb5"
+            ]
+        ]
+    },
+    {
+        "id": "11dff6bb50ca8eb5",
+        "type": "debug",
+        "z": "e10a0678.c58a28",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "8adf85944c22aefe",
+        "type": "change",
+        "z": "e10a0678.c58a28",
+        "name": "dataResponse",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"message\":\"create data successfully.\",\"error\":false}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "statusCode",
+                "pt": "msg",
+                "to": "201",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 740,
+        "wires": [
+            [
+                "fbed5d58dc2692c5"
+            ]
+        ]
+    }
+]
